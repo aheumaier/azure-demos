@@ -1,0 +1,98 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "eastus",
+      "metadata": {
+        "description": "Default location used is East US"
+      }
+    },
+    "dnsNamePrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "Sets the Domain name prefix for the cluster.  The concatenation of the domain name and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address."
+      }
+    },
+    "virtualNetworkName": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('dnsNamePrefix'), 'Vnet')]",
+      "metadata": {
+        "description": "VNET Name"
+      }
+    },
+    "virtualNetworkResourceGroup": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('dnsNamePrefix'), 'NetworkRG')]",
+      "metadata": {
+        "description": "Resource Group VNET is deployed in"
+      }
+    },
+    "subnet1Name": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('dnsNamePrefix'), 'ClusterSubnet')]",
+      "metadata": {
+        "description": "Name of the subnet inside the VNET"
+      }
+    },
+    "subnet2Name": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('dnsNamePrefix'), 'ServiceSubnet')]",
+      "metadata": {
+        "description": "Name of the subnet inside the VNET"
+      }
+    }
+  },
+  "variables": {
+    "vnetID": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+    "subnet1Ref": "[concat(variables('vnetID'),'/subnets/', parameters('subnet1Name'))]"
+  },
+  "resources": [{
+    "type": "Microsoft.Network/virtualNetworks",
+    "name": "[parameters('virtualNetworkName')]",
+    "apiVersion": "2016-03-30",
+    "location": "[parameters('location')]",
+    "comments": "Virtual network for overall solution",
+    "tags": {
+      "displayName": "Virtual Network"
+    },
+    "dependsOn": [],
+    "properties": {
+      "addressSpace": {
+        "addressPrefixes": [
+          "10.0.0.0/16"
+        ]
+      },
+      "subnets": [{
+        "name": "[parameters('subnet1Name')]",
+        "properties": {
+          "addressPrefix": "10.0.0.0/20 "
+        }},
+        {
+          "name": "[parameters('subnet2Name')]",
+          "properties": {
+            "addressPrefix": "10.0.16.0/20 "
+          }
+      }]
+    }
+  }],
+  "outputs": {
+    "virtualNetworkName": {
+      "type": "string",
+      "value": "[parameters('virtualNetworkName')]"
+    },
+    "virtualNetworkResourceGroup": {
+      "type": "string",
+      "value": "[resourceGroup().name]"
+    },
+    "subnet1Name": {
+      "type": "string",
+      "value": "[parameters('subnet1Name')]"
+    },
+    "subnet1ID": {
+      "type": "string",
+      "value": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]"
+    }
+  }
+}
