@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dnsNamePrefix": {
+      "value": "consorsdemo"
+    },
+    "subscriptionId": {
+      "value": "5305c27d-8d75-4340-9c62-4a7e98d498b4"
+    },
+    "sshRSAPublicKey": {
+      "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCw6xjIOpewbuYGKGcEoMKo/ikqylzBOBrtk1tJ+usJSIEd8W+Xydb4bU9jJFvi84Eq0kNX9u0R88LkZt9/24F1yMSQ0x2LQiRqMDxB5k9UEuFM9qffnRNlOLe8H+e1cC0QEoxRFftE0e727yHfxbzhEq+oEfsxuDGgMkR5V2uQLDVveQrSskTpqJ9SgX98wmMMx/Fy7RpovaT65QL++daSGxxaqaUB0CCnJCb47BmNmnBJekgg3vnLPI5ouaV+2T7j6v1UOZQZDKd+tmAlWZKGi6GpuDFOTvm4yM4yjnPPC/Y38FHen9IsW5comXFb5pdkeDncTV3gjEsyGFUpo3br24r0YSunpR9AkBlviwOzZj0+Q7jTpsBQLiyP/yjiIUeZjJ8TS/u7t0pu7zPPu033q12rkbwXEQou8AuFl82X8mR9ZHqHbR1PjCIQx7XK4gk3SwfajpXztg7SvneEY7Y7en2dn7hr3B/xdyHbMzwB1f9cy2Bqexq2T+87ieNZJ2yv7ozTbB4+4kJzPotgwRPk9GuPxU2BW9txg4x7b17S8/b75MZ9A4Rab8G9G3+LWiWThKXZk8hWH9ezEU4NuV3yTkuVk8WYjdFPCxptLA7JEacvSvNnY+ZP6gTxks9U+fbQ0tAjNdlV3N5/1paheg7pN7+9KG3vmkshoglEPRUQDw=="
+    },
+    "agentCount": {
+      "value": 3
+    },
+    "agentVMSize": {
+      "value": "Standard_DS3_v2"
+    },
+    "osDiskSizeGB": {
+      "value": 30
+    },
+    "clientAppID": {
+      "value": "db38a88b-5b14-46cb-877c-5ee4a6d1a704"
+    },  
+    "serverAppID": {
+      "value": "954b06b9-60bf-4096-a75f-74418d290cc3"
+    },
+    "serverAppSecret": {
+      "value": "CDtGlsw0e6LlRWsoBWE/7CsvunclaWg8FIzFOLXE9P8="
+    },
+    "tenantID": {
+      "value": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+    }
+  }
+}
