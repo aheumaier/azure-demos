@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "dnsNamePrefix": {
-      "value": "ContosoDemo"
+      "value": "contosoDemo"
     },
     "sshRSAPublicKey": {
       "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCw6xjIOpewbuYGKGcEoMKo/ikqylzBOBrtk1tJ+usJSIEd8W+Xydb4bU9jJFvi84Eq0kNX9u0R88LkZt9/24F1yMSQ0x2LQiRqMDxB5k9UEuFM9qffnRNlOLe8H+e1cC0QEoxRFftE0e727yHfxbzhEq+oEfsxuDGgMkR5V2uQLDVveQrSskTpqJ9SgX98wmMMx/Fy7RpovaT65QL++daSGxxaqaUB0CCnJCb47BmNmnBJekgg3vnLPI5ouaV+2T7j6v1UOZQZDKd+tmAlWZKGi6GpuDFOTvm4yM4yjnPPC/Y38FHen9IsW5comXFb5pdkeDncTV3gjEsyGFUpo3br24r0YSunpR9AkBlviwOzZj0+Q7jTpsBQLiyP/yjiIUeZjJ8TS/u7t0pu7zPPu033q12rkbwXEQou8AuFl82X8mR9ZHqHbR1PjCIQx7XK4gk3SwfajpXztg7SvneEY7Y7en2dn7hr3B/xdyHbMzwB1f9cy2Bqexq2T+87ieNZJ2yv7ozTbB4+4kJzPotgwRPk9GuPxU2BW9txg4x7b17S8/b75MZ9A4Rab8G9G3+LWiWThKXZk8hWH9ezEU4NuV3yTkuVk8WYjdFPCxptLA7JEacvSvNnY+ZP6gTxks9U+fbQ0tAjNdlV3N5/1paheg7pN7+9KG3vmkshoglEPRUQDw=="

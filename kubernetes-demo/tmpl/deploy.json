@@ -133,7 +133,6 @@
       "apiVersion": "2017-05-10",
       "name": "nestedNetworkTemplate",
       "type": "Microsoft.Resources/deployments",
-      "location": "[resourceGroup().location]",
       "resourceGroup": "[parameters('networkResourceGroup')]",
       "subscriptionId": "[parameters('subscriptionId')]",
       "properties": {
@@ -152,7 +151,6 @@
       "apiVersion": "2017-05-10",
       "name": "nestedClusterTemplate",
       "type": "Microsoft.Resources/deployments",
-      "location": "[resourceGroup().location]",
       "resourceGroup": "[parameters('clusterResourceGroup')]",
       "subscriptionId": "[parameters('subscriptionId')]",
       "properties": {
