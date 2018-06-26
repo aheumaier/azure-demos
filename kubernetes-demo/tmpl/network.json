@@ -1,8 +1,47 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
+  "parameters": {
+    "dnsNamePrefix": {
+      "type": "string",
+      "defaultValue": "consorsDemo",
+      "metadata": {
+        "description": "Sets the Domain name prefix for the cluster.  The concatenation of the domain name and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address."
+      }
+    },
+    "virtualNetworkName": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('dnsNamePrefix'), 'Vnet')]",
+      "metadata": {
+        "description": "VNET Name"
+      }
+    },
+    "virtualNetworkResourceGroup": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('dnsNamePrefix'), 'NetworkRG')]",
+      "metadata": {
+        "description": "Resource Group VNET is deployed in"
+      }
+    },
+    "subnet1Name": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('dnsNamePrefix'), 'ClusterSubnet')]",
+      "metadata": {
+        "description": "Name of the subnet inside the VNET"
+      }
+    },
+    "subnet2Name": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('dnsNamePrefix'), 'ServiceSubnet')]",
+      "metadata": {
+        "description": "Name of the subnet inside the VNET"
+      }
+    }
+  },
+  "variables": {
+    "vnetID": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+    "subnet1Ref": "[concat(variables('vnetID'),'/subnets/', parameters('subnet1Name'))]"
+  },
   "resources": [{
     "type": "Microsoft.Network/virtualNetworks",
     "name": "[parameters('virtualNetworkName')]",
