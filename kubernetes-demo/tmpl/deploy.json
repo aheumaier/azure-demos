@@ -21,8 +21,7 @@
       "defaultValue": "[concat(parameters('dnsNamePrefix'), 'Cluster')]",
       "metadata": {
         "description": "Resource Group AKS Cluster is deployed in"
-      },
-      
+      }
     },
     "networkResourceGroup": {
       "type": "string",
