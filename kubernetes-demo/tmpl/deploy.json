@@ -56,24 +56,6 @@
           "contentVersion":"1.0.0.0"
        }
       }
-    },
-    {
-      "apiVersion": "2017-05-10",
-      "name": "nestedClusterTemplate",
-      "type": "Microsoft.Resources/deployments",
-      "resourceGroup": "[parameters('clusterResourceGroup')]",
-      "subscriptionId": "[parameters('subscriptionId')]",
-      "properties": {
-        "mode": "incremental",
-        "templateLink": {
-          "uri": "[variables('clusterTemplateUrl')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parametersLink": {
-          "uri": "[variables('clusterParametersUrl')]",
-          "contentVersion":"1.0.0.0"
-       }
-      }
     }
   ],
   "outputs": {
