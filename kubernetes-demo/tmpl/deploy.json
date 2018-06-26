@@ -140,7 +140,11 @@
         "templateLink": {
           "uri": "[variables('networkTemplateUrl')]",
           "contentVersion": "1.0.0.0"
-        }
+        },
+        "parametersLink": {
+          "uri":"[variables('networkParametersUrl')]",
+          "contentVersion":"1.0.0.0"
+       }
       }
     },
     {
