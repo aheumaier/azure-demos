@@ -1,0 +1,93 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "eastus",
+      "metadata": {
+        "description": "Default location used is East US"
+      }
+    },
+    "dnsNamePrefix": {
+      "type": "string",
+      "metadata": {
+        "description": "Sets the Domain name prefix for the cluster.  The concatenation of the domain name and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address."
+      }
+    },
+    "subscriptionId": {
+      "type": "string",
+      "defaultValue": "5305c27d-8d75-4340-9c62-4a7e98d498b4",
+      "metadata": {
+        "description": "Subcription to deploy my stack to to"
+      }
+    },
+    "clusterResourceGroup": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('dnsNamePrefix'), 'Cluster')]",
+      "metadata": {
+        "description": "Resource Group AKS Cluster is deployed in"
+      },
+      
+    },
+    "networkResourceGroup": {
+      "type": "string",
+      "defaultValue": "[concat(parameters('dnsNamePrefix'), 'Network')]",
+      "metadata": {
+        "description": "Resource Group VNET is deployed in"
+      }
+    }
+  },
+  "variables": {
+    "templateBaseUrl": "https://raw.githubusercontent.com/aheumaier/azure-templates/master/kubernetes-demo/tmpl/",
+    "networkTemplateUrl": "[concat(variables('templateBaseUrl'), 'network.json')]",
+    "networkParametersUrl": "[concat(variables('templateBaseUrl'), 'network.json')]",
+    "clusterTemplateUrl": "[concat(variables('templateBaseUrl'), 'aksCluster.json')]",
+    "clusterParametersUrl": "[concat(variables('templateBaseUrl'), 'aksCluster.json')]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2017-05-10",
+      "name": "nestedNetworkTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "resourceGroup": "[parameters('networkResourceGroup')]",
+      "subscriptionId": "[parameters('subscriptionId')]",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[variables('networkTemplateUrl')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parametersLink": {
+          "uri": "[variables('networkParametersUrl')]",
+          "contentVersion":"1.0.0.0"
+       }
+      }
+    },
+    {
+      "apiVersion": "2017-05-10",
+      "name": "nestedClusterTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "resourceGroup": "[parameters('clusterResourceGroup')]",
+      "subscriptionId": "[parameters('subscriptionId')]",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[variables('clusterTemplateUrl')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parametersLink": {
+          "uri": "[variables('clusterParametersUrl')]",
+          "contentVersion":"1.0.0.0"
+       }
+      }
+    }
+  ],
+  "outputs": {
+    "messageFromNestedNetworkTemplate": {
+      "type": "string",
+      "value": "[reference('nestedNetworkTemplate').outputs.subnet1ID.value]"
+  }
+    
+  }
+}
