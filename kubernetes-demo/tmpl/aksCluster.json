@@ -104,6 +104,7 @@
       "type": "Microsoft.ContainerService/managedClusters",
       "apiVersion": "2018-03-31",
       "name": "[concat(parameters('dnsNamePrefix'),resourceGroup().name)]",
+      "location": "[resourceGroup().location]",
       "properties": {
         "kubernetesVersion": "1.10.3",
         "dnsPrefix": "[parameters('dnsNamePrefix')]",

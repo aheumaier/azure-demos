@@ -45,6 +45,7 @@
   "resources": [{
     "type": "Microsoft.Network/virtualNetworks",
     "name": "[parameters('virtualNetworkName')]",
+    "location": "[resourceGroup().location]",
     "apiVersion": "2016-03-30",
     "comments": "Virtual network for overall solution",
     "tags": {
