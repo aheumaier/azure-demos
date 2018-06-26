@@ -118,9 +118,9 @@
   "variables": {
     "templateBaseUrl": "https://raw.githubusercontent.com/aheumaier/azure-demos/master/kubernetes-demo/tmpl/",
     "networkTemplateUrl": "[concat(variables('templateBaseUrl'), 'network.json')]",
-    "networkParametersUrl": "[concat(variables('templateBaseUrl'), 'network.json')]",
+    "networkParametersUrl": "[concat(variables('templateBaseUrl'), 'deploy.parameters.json')]",
     "clusterTemplateUrl": "[concat(variables('templateBaseUrl'), 'aksCluster.json')]",
-    "clusterParametersUrl": "[concat(variables('templateBaseUrl'), 'aksCluster.json')]",
+    "clusterParametersUrl": "[concat(variables('templateBaseUrl'), 'deploy.parameters.jsonn')]",
     "agentsEndpointDNSNamePrefix": "[concat(parameters('dnsNamePrefix'),'agents')]",
     "vnetID": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "subnetID": "[resourceId(concat(resourceGroup().name, 'Networking'),'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]",  
@@ -154,7 +154,11 @@
         "templateLink": {
           "uri": "[variables('clusterTemplateUrl')]",
           "contentVersion": "1.0.0.0"
-        }
+        },
+        "parametersLink": {
+          "uri":"[variables('clusterParametersUrl')]",
+          "contentVersion":"1.0.0.0"
+       }
       }
     }
   ],
