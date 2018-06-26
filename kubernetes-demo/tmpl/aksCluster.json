@@ -2,15 +2,9 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "location": {
-      "type": "string",
-      "defaultValue": "eastus",
-      "metadata": {
-        "description": "Default location used is East US"
-      }
-    },
     "dnsNamePrefix": {
       "type": "string",
+      "defaultValue": "consorsDemo",
       "metadata": {
         "description": "Sets the Domain name prefix for the cluster.  The concatenation of the domain name and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address."
       }
@@ -105,33 +99,35 @@
     "vnetID": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "subnetID": "[resourceId(concat(resourceGroup().name, 'Networking'),'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]"
   },
-
   "resources": [
     {
       "type": "Microsoft.ContainerService/managedClusters",
       "apiVersion": "2018-03-31",
-      "location": "[resourceGroup().location]",
       "name": "[concat(parameters('dnsNamePrefix'),resourceGroup().name)]",
       "properties": {
         "kubernetesVersion": "1.10.3",
         "dnsPrefix": "[parameters('dnsNamePrefix')]",
-        "agentPoolProfiles": [{
-          "name": "[variables('agentsEndpointDNSNamePrefix')]",
-          "count": "[parameters('agentCount')]",
-          "vmSize": "[parameters('agentVMSize')]",
-          "osDiskSizeGB": "[parameters('osDiskSizeGB')]",
-          "dnsPrefix": "string",
-          "storageProfile": "ManagedDisks",
-          "vnetSubnetID": "[variables('subnetID')]",
-          "maxPods": 50,
-          "osType": "Linux"
-        }],
+        "agentPoolProfiles": [
+          {
+            "name": "[variables('agentsEndpointDNSNamePrefix')]",
+            "count": "[parameters('agentCount')]",
+            "vmSize": "[parameters('agentVMSize')]",
+            "osDiskSizeGB": "[parameters('osDiskSizeGB')]",
+            "dnsPrefix": "string",
+            "storageProfile": "ManagedDisks",
+            "vnetSubnetID": "[variables('subnetID')]",
+            "maxPods": 50,
+            "osType": "Linux"
+          }
+        ],
         "linuxProfile": {
           "adminUsername": "[parameters('adminUsername')]",
           "ssh": {
-            "publicKeys": [{
-              "keyData": "[parameters('sshRSAPublicKey')]"
-            }]
+            "publicKeys": [
+              {
+                "keyData": "[parameters('sshRSAPublicKey')]"
+              }
+            ]
           }
         },
         "addonProfiles": {},

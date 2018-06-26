@@ -2,15 +2,9 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "location": {
-      "type": "string",
-      "defaultValue": "eastus",
-      "metadata": {
-        "description": "Default location used is East US"
-      }
-    },
     "dnsNamePrefix": {
       "type": "string",
+      "defaultValue": "consorsDemo",
       "metadata": {
         "description": "Sets the Domain name prefix for the cluster.  The concatenation of the domain name and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address."
       }
@@ -39,7 +33,7 @@
     }
   },
   "variables": {
-    "templateBaseUrl": "https://raw.githubusercontent.com/aheumaier/azure-templates/master/kubernetes-demo/tmpl/",
+    "templateBaseUrl": "https://raw.githubusercontent.com/aheumaier/azure-demos/master/kubernetes-demo/tmpl/",
     "networkTemplateUrl": "[concat(variables('templateBaseUrl'), 'network.json')]",
     "networkParametersUrl": "[concat(variables('templateBaseUrl'), 'network.json')]",
     "clusterTemplateUrl": "[concat(variables('templateBaseUrl'), 'aksCluster.json')]",

@@ -4,9 +4,6 @@
   "parameters": {
     "dnsNamePrefix": {
       "value": "demo"
-    },
-    "location": {
-      "value": "eastus"
     }
   }
 }
