@@ -120,7 +120,7 @@
     "networkTemplateUrl": "[concat(variables('templateBaseUrl'), 'network.json')]",
     "networkParametersUrl": "[concat(variables('templateBaseUrl'), 'deploy.parameters.json')]",
     "clusterTemplateUrl": "[concat(variables('templateBaseUrl'), 'aksCluster.json')]",
-    "clusterParametersUrl": "[concat(variables('templateBaseUrl'), 'deploy.parameters.jsonn')]",
+    "clusterParametersUrl": "[concat(variables('templateBaseUrl'), 'deploy.parameters.json')]",
     "agentsEndpointDNSNamePrefix": "[concat(parameters('dnsNamePrefix'),'agents')]",
     "vnetID": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "subnetID": "[resourceId(concat(resourceGroup().name, 'Networking'),'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]",  
