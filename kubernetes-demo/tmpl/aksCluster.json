@@ -135,12 +135,6 @@
         "enableRBAC": true,
         "networkProfile": {
           "networkPlugin": "azure"
-        },
-        "aadProfile": {
-          "clientAppID": "[parameters('clientAppID')]",
-          "serverAppID": "[parameters('serverAppID')]",
-          "serverAppSecret": "[parameters('serverAppSecret')]",
-          "tenantID": "[parameters('tenantID')]"
         }
       }
     }
