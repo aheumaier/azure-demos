@@ -121,7 +121,7 @@
     "networkParametersUrl": "[concat(variables('templateBaseUrl'), 'network.parameters.json')]",
     "clusterTemplateUrl": "[concat(variables('templateBaseUrl'), 'aksCluster.json')]",
     "clusterParametersUrl": "[concat(variables('templateBaseUrl'), 'aksCluster.parameters.json')]",
-    "agentsEndpointDNSNamePrefix": "[concat(parameters('dnsNamePrefix'),'agents')]",
+    "agentsEndpointDNSNamePrefix": "'agents",
     "vnetID": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "subnetID": "[resourceId(concat(resourceGroup().name, 'Networking'),'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]",  
     "subnet1Ref": "[concat(variables('vnetID'),'/subnets/', parameters('subnet1Name'))]"
