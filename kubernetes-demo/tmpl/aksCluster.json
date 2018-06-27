@@ -95,7 +95,7 @@
     }
   },
   "variables": {
-    "agentsEndpointDNSNamePrefix": "[concat(parameters('dnsNamePrefix'),'agents')]",
+    "agentsEndpointDNSNamePrefix": "agent",
     "vnetID": "[resourceId(parameters('virtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "subnetID": "[resourceId(concat(resourceGroup().name, 'Networking'),'Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnet1Name'))]"
   },
